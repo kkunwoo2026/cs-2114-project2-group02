@@ -292,10 +292,10 @@ public class User {
      */
     private void initializeCategories() {
 
-        categories.add(new Category("Food"));
-        categories.add(new Category("Transportation"));
-        categories.add(new Category("Entertainment"));
-        categories.add(new Category("Utilities"));
-        categories.add(new Category("Other"));
+        categories.addToEnd(new Category("Food"));
+        categories.addToEnd(new Category("Transportation"));
+        categories.addToEnd(new Category("Entertainment"));
+        categories.addToEnd(new Category("Utilities"));
+        categories.addToEnd(new Category("Other"));
     }
 }
