@@ -15,6 +15,7 @@ import java.util.Arrays;
 
 /**
  * Creating class for user.
+ * 
  * @author Kunwoo Kim
  * @version 2026.10.10
  */
@@ -86,7 +87,8 @@ public class User {
         this.monthlyBudget = monthlyBudget;
         this.fixedExpenses = fixedExpenses;
     }
-    
+
+
     /**
      * Returns the monthly budget.
      * 
@@ -95,6 +97,7 @@ public class User {
     public BigDecimal getMonthlyBudget() {
         return monthlyBudget;
     }
+
 
     /**
      * Returns the fixed expenses.
@@ -154,6 +157,7 @@ public class User {
         return transaction;
     }
 
+
     /**
      * Deletes the transaction with the specified ID.
      * 
@@ -183,9 +187,12 @@ public class User {
      * @return A transaction list of expenses.
      */
     public Transaction[] getExpenses() {
-        Transaction[] expenses = transactions.toArray();
+        Transaction[] expenses = transactions.toArray(
+            new Transaction[transactions.size()]);
+
         Arrays.sort(expenses, (first, second) -> first.getDate().compareTo(
             second.getDate()));
+
         return expenses;
     }
 
@@ -196,7 +203,7 @@ public class User {
      * @return getters for categories().
      */
     public Category[] getCategories() {
-        return categories.toArray();
+        return categories.toArray(new Category[categories.size()]);
     }
 
 
@@ -207,11 +214,14 @@ public class User {
      */
     public BigDecimal getTotalSpent() {
         BigDecimal total = BigDecimal.ZERO;
-        Transaction[] expenses = transactions.toArray();
-        
+
+        Transaction[] expenses = transactions.toArray(
+            new Transaction[transactions.size()]);
+
         for (Transaction transaction : expenses) {
             total = total.add(transaction.getAmount());
         }
+
         return total;
     }
 
@@ -234,7 +244,8 @@ public class User {
                 "Please input a valid category.");
         }
         BigDecimal total = BigDecimal.ZERO;
-        Transaction[] expenses = transactions.toArray();
+        Transaction[] expenses = transactions.toArray(
+            new Transaction[transactions.size()]);
         for (Transaction transaction : expenses) {
             if (transaction.getCategory().equals(category)) {
                 total = total.add(transaction.getAmount());
@@ -253,16 +264,20 @@ public class User {
         return monthlyBudget.subtract(fixedExpenses).subtract(getTotalSpent());
     }
 
+
     /**
      * Finds a category by name, ignoring capitalization.
+     * 
+     * @param categoryName
+     *            - name of category
      */
     private Category findCategory(String categoryName) {
-
         if (categoryName == null) {
             return null;
         }
 
-        Category[] categoryArray = categories.toArray();
+        Category[] categoryArray = categories.toArray(new Category[categories
+            .size()]);
 
         for (Category category : categoryArray) {
             if (category.getName().equalsIgnoreCase(categoryName.trim())) {
@@ -282,11 +297,12 @@ public class User {
      * @return Transaction
      */
     private Transaction findTransaction(String transactionId) {
-
         if (transactionId == null) {
             return null;
         }
-        Transaction[] expenseArray = transactions.toArray();
+
+        Transaction[] expenseArray = transactions.toArray(
+            new Transaction[transactions.size()]);
 
         for (Transaction transaction : expenseArray) {
             if (transaction.getId().equals(transactionId)) {
