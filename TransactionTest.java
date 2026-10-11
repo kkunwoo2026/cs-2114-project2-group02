@@ -73,7 +73,7 @@ public class TransactionTest extends TestCase
     {
         try
         {
-            new Transaction("002", LocalDate.of(2026, 10, 8). null, 
+            new Transaction("002", LocalDate.of(2026, 10, 8), null, 
                 "Groceries", new BigDecimal("35.50"));
             fail("Expected IllegalArgumentException");
         }
