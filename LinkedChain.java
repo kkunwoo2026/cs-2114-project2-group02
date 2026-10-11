@@ -3,7 +3,7 @@
  *  LinkedChain<T> Class with basic LinkedChain methods
  *  @param <T>
  * 
- *  @author Andrew Park
+ *  @author Andrew Park (andrewp04)
  *  @version Oct 5, 2026
  */
 public class LinkedChain<T> {
