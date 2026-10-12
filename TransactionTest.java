@@ -23,7 +23,7 @@ public class TransactionTest extends TestCase
             transaction.getDate());
         assertEquals(category, transaction.getCategory());
         assertEquals("Groceries", transaction.getDescription());
-        assertEquals(new BigDecimal("35.50"), transaction.getAmount());
+        assertEquals(0, new BigDecimal("35.50").compareTo(transaction.getAmount()));
             
     }
     
@@ -171,7 +171,7 @@ public class TransactionTest extends TestCase
         Transaction maxTransaction = new Transaction("002", LocalDate.of(2026, 10, 8), 
             category, "Groceries", new BigDecimal("100000.00"));
         
-        assertEquals(new BigDecimal("100000.00"), maxTransaction.getAmount());
+        assertEquals(0, new BigDecimal("100000.00").compareTo(maxTransaction.getAmount()));
     }
  
     public void testEqualsSameId()
